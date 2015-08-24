@@ -1,0 +1,25 @@
+<%= form_for @request, html:{class: "form-horizontal"} do |f|  %>
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "form-control"  %>
+  </div>
+  <div>
+    <%= f.label :email%>
+    <%= f.text_field :email, class: "form-control"  %>
+  </div>
+  <div>
+    <%= f.label :department%>
+    <%= radio_button_tag(:department, "Sales")  %>
+    <%= label_tag(:department_Sales, "Sales")  %>
+    <%= radio_button_tag(:department, "Marketing")  %>
+    <%= label_tag(:department_Marketing, "Marketing")  %>
+    <%= radio_button_tag(:department, "Technical")  %>
+    <%= label_tag(:department_Technical, "Technical")  %>
+  </div>
+  <div>
+    <%= f.label :message%>
+    <%= f.text_area :message, class: "form-control"  %>
+  </div>
+  <%= f.submit class: "btn btn-primary"%>
+<% end %>
+
