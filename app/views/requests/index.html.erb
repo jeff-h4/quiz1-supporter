@@ -2,9 +2,33 @@
 
 <p> See all requests below: </p>
 
-<ul>
-<% @requests.each do |r|  %>
 
-  <li><%= r.name  %></li>
-<% end  %>
-</ul>
+<table>
+  <thead>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Department</th>
+    <th>Message</th>
+    <th>Actions</th>
+  </thead>
+  <tbody>
+  <% @requests.each do |r|  %>
+      <tr>
+        <td><%= r.name  %></td>
+        <td><%= r.email %></td>
+        <td><%= r.department %></td>
+        <td><%= r.message %></td>
+        <!--  Actions and buttons  -->
+        <td>
+          <%= link_to "Edit", edit_request_path(r), class: "btn btn-info"  %>
+          <%= link_to "Delete", request_path(r), method: :delete, data: {confirm: "Are you sure?"} %>
+          <% if r.done  %>
+            <%= link_to "Not Done", edit_request_path(r), class: "btn btn-info"  %>
+          <% else  %>
+            <%= link_to "Done", edit_request_path(r), class: "btn btn-info"  %>
+          <% end  %>
+        </td>
+      </tr>
+    <% end  %>
+  </tbody>
+</table>

@@ -2,7 +2,7 @@ class RequestsController < ApplicationController
 
   before_action :find_request, only: [:show,:edit,:update,:destroy]
   def new
-    @request = Request.new
+    @request = Request.new(done: false, department: "Sales")
   end
 
   def create
@@ -16,6 +16,10 @@ class RequestsController < ApplicationController
   end
 
   def show
+  end
+
+  def edit
+
   end
 
   def update
