@@ -32,7 +32,7 @@ class RequestsController < ApplicationController
   end
 
   def index
-    @requests = Request.all
+    @requests = Request.order("done")
   end
 
   def destroy
