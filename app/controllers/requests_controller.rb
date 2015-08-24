@@ -1,5 +1,6 @@
 class RequestsController < ApplicationController
 
+  before_action :find_request, only: [:show,:edit,:update,:destroy]
   def new
     @request = Request.new
   end
@@ -18,6 +19,12 @@ class RequestsController < ApplicationController
   end
 
   def update
+    if @request.update request_params
+      redirect_to request_path(@request), notice: "Request updated!"
+    else
+      flash[:alert] = "See errors below:"
+      render :edit
+    end
   end
 
   def index
@@ -25,9 +32,14 @@ class RequestsController < ApplicationController
   end
 
   def destroy
+    @request.destroy
+    redirect_to requests_path
   end
   private
   def request_params
     params.require(:request).permit(:name,:email,:department,:message,:done)
+  end
+  def find_request
+    @request = Request.find params[:id]
   end
 end

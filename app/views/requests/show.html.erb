@@ -1,2 +1,18 @@
-<h1>Requests#show,</h1>
-<p>Find me in app/views/requests/show,.html.erb</p>
+<h1>Showing request</h1>
+
+<div>
+  <h3>Request:</h3>
+  <p>Name: <%= @request.name %></p>
+  <p>Email: <%= @request.email %></p>
+  <p>Department: <%= @request.department %></p>
+  <p>Is_done? <%= @request.done %></p>
+  <p>Message: <%= @request.message %></p>
+</div>
+<hr>
+<!--
+ <hr>
+ <%= link_to "Edit", edit_request_path, class: "btn btn-info"  %>
+ <%= link_to "Delete", request_path(@request), method: :delete, data: {confirm: "Are you sure?"}
+-->
+
+

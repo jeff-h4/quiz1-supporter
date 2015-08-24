@@ -9,7 +9,22 @@
 <body>
   <%= render "layouts/nav"  %>
 
-<%= yield %>
+  <%= yield %>
+
+  <% if flash[:notice]  %>
+    <div role="alert"><%= flash[:notice]  %></div>
+  <% elsif flash[:alert]  %>
+    <div role="alert"><%= flash[:alert]  %></div>
+  <% end %>
+  <% if @request%>
+    <% if @request.errors.any? %>
+        <ul>
+        <% @request.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  <% end %>
 
 </body>
 </html>
