@@ -1,17 +1,18 @@
 class RequestsController < ApplicationController
-  def new,
+  def new
+    @request = Request.new
   end
 
-  def create,
+  def create
   end
 
-  def show,
+  def show
   end
 
-  def update,
+  def update
   end
 
-  def index,
+  def index
   end
 
   def destroy
