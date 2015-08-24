@@ -32,14 +32,24 @@
           <%= link_to "Edit", edit_request_path(r), class: "btn btn-info"  %>
           <%= link_to "Delete", request_path(r), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
           <% if r.done  %>
-            <%= link_to "Not Done", edit_request_path(r), class: "btn btn-info"  %>
+            <% @request = Request.find(r.id) %>
+            <%= form_for @request, html:{class: "form-horizontal"} do |f| %>
+              <%= f.hidden_field :name, value: r.name%>
+              <%= f.hidden_field :email, value: r.email %>
+              <%= f.hidden_field :department, value: r.department %>
+              <%= f.hidden_field :message, value: r.message %>
+              <%= f.hidden_field :done, value: false %>
+              <%= f.submit "Mark Not Done", class: "btn btn-primary"%>
+            <% end  %>
+ 
           <% else  %>
-            <%= form_for r, html:{class: "form-horizontal"} do |f| %>
-              <% hidden_field_tag(:name, r.name)%>
-              <%# hidden_field_tag "email", r.email %>
-              <%# hidden_field_tag "department", r.department %>
-              <%# hidden_field_tag "message", r.message %>
-              <%# hidden_field_tag "done", true %>
+            <% @request = Request.find(r.id) %>
+            <%= form_for @request, html:{class: "form-horizontal"} do |f| %>
+              <%= f.hidden_field :name, value: r.name%>
+              <%= f.hidden_field :email, value: r.email %>
+              <%= f.hidden_field :department, value: r.department %>
+              <%= f.hidden_field :message, value: r.message %>
+              <%= f.hidden_field :done, value: true %>
               <%= f.submit "Mark Done", class: "btn btn-primary"%>
             <% end  %>
           <% end  %>
