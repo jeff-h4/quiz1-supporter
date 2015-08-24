@@ -1,9 +1,9 @@
-<h1>Requests#index</h1>
+<h1>Support Requests</h1>
 
 <p> See all requests below: </p>
 
 
-<table>
+<table class="table table-bordered table-condensed">
   <thead>
     <th>Name</th>
     <th>Email</th>
@@ -21,7 +21,7 @@
         <!--  Actions and buttons  -->
         <td>
           <%= link_to "Edit", edit_request_path(r), class: "btn btn-info"  %>
-          <%= link_to "Delete", request_path(r), method: :delete, data: {confirm: "Are you sure?"} %>
+          <%= link_to "Delete", request_path(r), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
           <% if r.done  %>
             <%= link_to "Not Done", edit_request_path(r), class: "btn btn-info"  %>
           <% else  %>
