@@ -1,7 +1,16 @@
 <h1>Support Requests</h1>
 
 <p> See all requests below: </p>
+<%= form_tag(requests_path, :method => "get", id: "search-form") do %>
+  <%= text_field_tag :search, params[:search], placeholder: "Search Requests" %>
+  <%= submit_tag "Search" %>
+<% end %>
 
+<% if @requests.present? %>
+  <p> Search results:</p>
+<% else %>
+  <p>There are no requests containing the term(s) <%= params[:search] %>.</p>
+<% end %>
 
 <table class="table table-bordered table-condensed">
   <thead>
@@ -15,7 +24,7 @@
   <% @requests.each do |r|  %>
       <tr>
         <td><%= r.name  %></td>
-        <td><%= mail_to r.email %></td>
+      <td><%= mail_to r.email %></td>
         <td><%= r.department %></td>
         <td><%= r.message %></td>
         <!--  Actions and buttons  -->

@@ -32,7 +32,14 @@ class RequestsController < ApplicationController
   end
 
   def index
+    @search_term = ""
     @requests = Request.order("done")
+    if params[:search]
+      @requests= Request.search(params[:search]).order("done")
+    else
+      @requests = Request.all.order('done')
+    end
+
   end
 
   def destroy
