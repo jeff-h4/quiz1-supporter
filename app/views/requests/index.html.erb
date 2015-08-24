@@ -15,7 +15,7 @@
   <% @requests.each do |r|  %>
       <tr>
         <td><%= r.name  %></td>
-        <td><%= r.email %></td>
+        <td><%= mail_to r.email %></td>
         <td><%= r.department %></td>
         <td><%= r.message %></td>
         <!--  Actions and buttons  -->
