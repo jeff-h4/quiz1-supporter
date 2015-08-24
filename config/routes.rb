@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'requests#index'
   resources :requests
+  #post 'requests/:id/done' => 'requests#done', as: :mark_request_done
+  #post 'requests/:id/not_done' => 'requests#not_done', as: :mark_request_not_done
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

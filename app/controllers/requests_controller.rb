@@ -39,6 +39,16 @@ class RequestsController < ApplicationController
     @request.destroy
     redirect_to requests_path
   end
+
+  #def done
+  #  if @request.update request_params
+  #    redirect_to request_path(@request), notice: "Request marked as DONE!"
+  #  else
+  #    flash[:alert] = "See errors below:"
+  #    render :index
+  #  end
+  #end
+
   private
   def request_params
     params.require(:request).permit(:name,:email,:department,:message,:done)
